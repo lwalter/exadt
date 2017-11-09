@@ -11,14 +11,22 @@ defmodule Exadt.BinarySearchTree do
 
   alias Exadt.BinarySearchTree, as: Bst
 
-  @spec insert(%Bst{}, integer) :: %Bst{}
-  def insert(:leaf, value) do
+  @spec new_leaf(integer) :: %Bst{}
+  defp new_leaf(value) do
     %Bst{
       left: :leaf,
       value: value,
       right: :leaf
     }
   end
+
+  @spec insert(%Bst{}, integer) :: %Bst{}
+  def insert(%Bst{
+    left: nil,
+    value: nil,
+    right: nil
+  }, value), do: new_leaf(value)
+  def insert(:leaf, value), do: new_leaf(value)
   def insert(bst = %Bst{
               left: left,
               value: current,
@@ -39,6 +47,29 @@ defmodule Exadt.BinarySearchTree do
       value == current -> bst
     end
   end
+
   # remove
-  # exists
+  @spec exists(%Bst{}, integer) :: boolean
+  def exists(%Bst{
+              left: nil,
+              value: nil,
+              right: nil
+            }, _value), do: false
+  def exists(%Bst{
+              left: _left,
+              value: current,
+              right: _right}, value) when value == current, do: true
+  def exists(:leaf, _value), do: false
+  def exists(%Bst{
+              left: left,
+              value: current,
+              right: _right}, value) when value < current do
+    exists(left, value)
+  end
+  def exists(%Bst{
+              left: _left,
+              value: current,
+              right: right}, value) when value > current do
+    exists(right, value)
+  end
 end

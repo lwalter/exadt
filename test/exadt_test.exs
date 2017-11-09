@@ -1,8 +1,5 @@
 defmodule ExadtTest do
-  use ExUnit.Case
-  doctest Exadt
+  use ExUnit.Case, async: true
 
-  test "greets the world" do
-    assert Exadt.hello() == :world
-  end
+  doctest Exadt
 end
