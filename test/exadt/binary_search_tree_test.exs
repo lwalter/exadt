@@ -11,6 +11,22 @@ defmodule Exadt.BinarySearchTreeTest do
     right: :leaf
   }
 
+  @left_node %Bst{
+    left: :leaf,
+    value: 5,
+    right: :leaf
+  }
+  @right_node %Bst{
+    left: :leaf,
+    value: 15,
+    right: :leaf
+  }
+  @tree_depth_2 %Bst{
+    left: @left_node,
+    value: 10,
+    right: @right_node
+  }
+
   describe ".insert" do
     test "creates a root node" do
       bst = Bst.insert(%Bst{}, 5)
@@ -70,21 +86,6 @@ defmodule Exadt.BinarySearchTreeTest do
       assert result == false
     end
 
-    @left_node %Bst{
-      left: :leaf,
-      value: 5,
-      right: :leaf
-    }
-    @right_node %Bst{
-      left: :leaf,
-      value: 15,
-      right: :leaf
-    }
-    @tree_depth_2 %Bst{
-      left: @left_node,
-      value: 10,
-      right: @right_node
-    }
     test "tree depth == 2, returns true when value exists" do
       result = Bst.exists(@tree_depth_2, @left_node.value)
 
@@ -95,6 +96,72 @@ defmodule Exadt.BinarySearchTreeTest do
       result = Bst.exists(@tree_depth_2, @right_node.value + 1)
 
       assert result == false
+    end
+  end
+
+  describe ".min_value" do
+    test "nil tree returns nil" do
+      nil_root = %Bst{left: nil, value: nil, right: nil}
+      min_val = Bst.min_value(nil_root)
+      assert min_val == nil
+    end
+
+    test "root only returns root" do
+      min_val = Bst.min_value(@leafnode1)
+
+      assert min_val == @leafnode1.value
+    end
+
+    test "tree depth 2 left leaf min is returned" do
+      min_val = Bst.min_value(@tree_depth_2)
+
+      assert min_val == @left_node.value
+    end
+
+    test "tree root min leaf" do
+      minimum_value = 5
+
+      tree = %Bst{
+        left: :leaf,
+        value: minimum_value,
+        right: %Bst{
+          left: %Bst{
+            left: :leaf,
+            value: 8,
+            right: :leaf
+          },
+          value: 10,
+          right: %Bst{
+            left: :leaf,
+            value: 15,
+            right: :leaf
+          }
+        }
+      }
+
+      actual_min_val = Bst.min_value(tree)
+
+      assert actual_min_val == minimum_value
+    end
+  end
+
+  describe ".delete" do
+    test "root node deleted" do
+      bst = Bst.delete(@leafnode1, @leafnode1.value)
+
+      assert bst == nil
+    end
+
+    test "left leaf deleted" do
+      bst = Bst.delete(@tree_depth_2, @tree_depth_2.left.value)
+
+      expected_bst = %Bst{
+        left: :leaf,
+        value: @tree_depth_2.value,
+        right: @right_node
+      }
+
+      assert expected_bst == bst
     end
   end
 end
