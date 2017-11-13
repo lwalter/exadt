@@ -1,6 +1,7 @@
 # Exadt
 
 **TODO: Add description**
+Working through many of the abstract data types referenced [here](https://en.wikipedia.org/wiki/List_of_data_structures).
 
 ## Installation
 

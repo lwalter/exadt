@@ -2,16 +2,17 @@ defmodule Exadt.OrganizingList do
   @moduledoc """
   Self-organizing list imeplementation. Implementation applies the
   [Move to Front method](https://en.wikipedia.org/wiki/Self-organizing_list).
+
+  For a count heuristic implementation something to retain state will be needed.
+  GenServer, Agent?
   """
 
-  # TODO(lnw) make heuristic configurable
-
-  @spec insert([integer], integer) :: [integer]
+  @spec insert([any], any) :: [any]
   def insert(list, value) do
     [value | list]
   end
 
-  @spec get([integer], integer) :: {integer | nil, [integer]}
+  @spec get([any], any) :: {any | nil, [any]}
   def get(list, value) do
     index = Enum.find_index(list, fn(n) -> n == value end)
     cond do
@@ -26,7 +27,7 @@ defmodule Exadt.OrganizingList do
     end
   end
 
-  @spec delete([integer], integer) :: {boolean, [integer]}
+  @spec delete([any], any) :: {boolean, [any]}
   def delete(list, value) do
     index = Enum.find_index(list, fn(n) -> n == value end)
 
