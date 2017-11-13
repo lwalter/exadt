@@ -1,9 +1,9 @@
-defmodule Exadt.BinarySearchTreeTest do
+defmodule Exadt.Tree.BinarySearchTreeTest do
   use ExUnit.Case, async: true
 
-  doctest Exadt.BinarySearchTree
+  doctest Exadt.Tree.BinarySearchTree
 
-  alias Exadt.BinarySearchTree, as: Bst
+  alias Exadt.Tree.BinarySearchTree, as: Bst
 
   @leafnode1 %Bst{
     left: :leaf,

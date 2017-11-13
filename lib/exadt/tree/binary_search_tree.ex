@@ -1,4 +1,4 @@
-defmodule Exadt.BinarySearchTree do
+defmodule Exadt.Tree.BinarySearchTree do
   @moduledoc """
   Binary search tree functionality.
   """
@@ -9,7 +9,7 @@ defmodule Exadt.BinarySearchTree do
     :right
   ]
 
-  alias Exadt.BinarySearchTree, as: Bst
+  alias Exadt.Tree.BinarySearchTree, as: Bst
 
   @spec new_leaf(integer) :: %Bst{}
   defp new_leaf(value) do

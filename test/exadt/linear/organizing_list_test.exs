@@ -1,9 +1,9 @@
-defmodule Exadt.OrganizingListTest do
+defmodule Exadt.Linear.OrganizingListTest do
   use ExUnit.Case, async: true
 
-  doctest Exadt.OrganizingList
+  doctest Exadt.Linear.OrganizingList
 
-  alias Exadt.OrganizingList, as: Ol
+  alias Exadt.Linear.OrganizingList, as: Ol
 
   @list [1, 5, 10]
 

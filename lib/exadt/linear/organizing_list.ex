@@ -1,4 +1,4 @@
-defmodule Exadt.OrganizingList do
+defmodule Exadt.Linear.OrganizingList do
   @moduledoc """
   Self-organizing list imeplementation. Implementation applies the
   [Move to Front method](https://en.wikipedia.org/wiki/Self-organizing_list).
