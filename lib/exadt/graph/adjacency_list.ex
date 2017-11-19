@@ -35,7 +35,6 @@ defmodule Exadt.Graph.AdjacencyList do
       Map.get(map, x)
     end)
 
-    # TODO(lnw): should this case raise an error?
     if x_neighbors == nil do
       false
     else
