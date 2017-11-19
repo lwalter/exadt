@@ -1,10 +1,21 @@
 # Exadt
+Library containing implementations of common abstract data types, many of which referenced [here](https://en.wikipedia.org/wiki/List_of_data_structures).
 
-**TODO: Add description**
-Working through many of the abstract data types referenced [here](https://en.wikipedia.org/wiki/List_of_data_structures).
+## Graphs
+- [x] Adjacency list
+
+## Linear
+- [x] Queue
+- [ ] Stack
+- [x] Organizing list
+- [ ] Stack
+
+## Trees
+- [x] Binary search tree
+- [ ] Heap
+- [ ] AVL tree
 
 ## Installation
-
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `exadt` to your list of dependencies in `mix.exs`:
 
@@ -15,8 +26,3 @@ def deps do
   ]
 end
 ```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/exadt](https://hexdocs.pm/exadt).
-
