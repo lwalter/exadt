@@ -77,29 +77,25 @@ defmodule Exadt.Tree.BinarySearchTree do
   @spec delete(%Bst{}, integer) :: %Bst{} | nil
   def delete(:leaf, _value), do: nil
   def delete(bst = %Bst{left: left, value: current_value, right: right}, value) do
-    IO.puts("====")
-    IO.inspect(bst)
     cond do
       current_value == value -> do_delete(bst)
       current_value < value -> %Bst{
                                   left: left,
-                                  value: value,
+                                  value: current_value,
                                   right: delete(right, value)}
       current_value > value -> %Bst{
                                   left: delete(left, value),
-                                  value: value,
+                                  value: current_value,
                                   right: right}
     end
   end
 
-  # Something off here
   defp do_delete(%Bst{left: :leaf, value: _value, right: :leaf}), do: :leaf
   defp do_delete(%Bst{left: :leaf, value: _value, right: right}), do: right
   defp do_delete(%Bst{left: left, value: _value, right: :leaf}), do: left
   defp do_delete(%Bst{left: left, value: _value, right: right}) do
     min_value = min_value(right)
-
-    {left, min_value, delete(right, min_value)}
+    %Bst{left: left, value: min_value, right: delete(right, min_value)}
   end
 
   @spec min_value(%Bst{}) :: integer

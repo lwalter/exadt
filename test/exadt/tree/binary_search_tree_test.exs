@@ -148,8 +148,7 @@ defmodule Exadt.Tree.BinarySearchTreeTest do
   describe ".delete" do
     test "root node deleted" do
       bst = Bst.delete(@leafnode1, @leafnode1.value)
-
-      assert bst == nil
+      assert bst == :leaf
     end
 
     test "left leaf deleted" do
@@ -159,6 +158,30 @@ defmodule Exadt.Tree.BinarySearchTreeTest do
         left: :leaf,
         value: @tree_depth_2.value,
         right: @right_node
+      }
+
+      assert expected_bst == bst
+    end
+
+    test "right leaf deleted" do
+      bst = Bst.delete(@tree_depth_2, @tree_depth_2.right.value)
+
+      expected_bst = %Bst{
+        left: @left_node,
+        value: @tree_depth_2.value,
+        right: :leaf
+      }
+
+      assert expected_bst == bst
+    end
+
+    test "parent node deleted tree re-arranged" do
+      bst = Bst.delete(@tree_depth_2, @tree_depth_2.value)
+
+      expected_bst = %Bst{
+        left: @left_node,
+        value: @tree_depth_2.right.value,
+        right: :leaf
       }
 
       assert expected_bst == bst

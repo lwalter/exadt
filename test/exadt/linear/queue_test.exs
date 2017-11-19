@@ -1,5 +1,5 @@
 defmodule Exadt.Linear.QueueTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case
 
   doctest Exadt.Linear.Queue
 
