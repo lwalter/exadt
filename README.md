@@ -6,9 +6,8 @@ Library containing implementations of common abstract data types, many of which 
 
 ## Linear
 - [x] Queue
-- [ ] Stack
+- [x] Stack
 - [x] Organizing list
-- [ ] Stack
 
 ## Trees
 - [x] Binary search tree
